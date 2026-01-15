@@ -1,0 +1,47 @@
+<form [formGroup]="form">
+  <div class="container">
+    <div class="form-row">
+      <ng-container *ngFor="let field of inputData">
+        <div *ngIf="field.type == 'input'" class="input">
+          <label class="label" style="width:auto">{{ field.label }} </label>
+          <input [formControlName]="field.field" />
+        </div>
+
+        <div *ngIf="field.type == 'dropdown'" class="input">
+          <label>{{ field.label }}</label>
+          <select [formControlName]="field.field">
+            <option
+              *ngFor="let op of dropdownOptions[field.optionsData]"
+              [value]="op['id']"
+            >
+              {{ op['key'] }}
+            </option>
+          </select>
+        </div>
+
+        <div *ngIf="field.type == 'date'" class="input">
+          <label class="label">{{ field.label }}</label>
+          <input [formControlName]="field.field" type="date" />
+        </div>
+
+        <div *ngIf="field.type == 'radio'" class="input">
+          <label class="label">{{ field.label }}</label>
+          <ng-container
+            *ngFor="let op of dropdownOptions[field.optionsData]"
+            style="display:flex;flex-direction:row !important"
+            ><label class="label">{{ op.key }}</label>
+            <input value="op.id" type="radio" name="field.field" />
+          </ng-container>
+        </div>
+
+        <div *ngIf="field.type == 'textarea'" class="input">
+          <label class="label">{{ field.label }}</label>
+          <textarea [formControlName]="field.field"></textarea>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</form>
+<footer>
+  <button (click)="handleSubmit()">Submit</button>
+</footer>
