@@ -1,0 +1,12 @@
+.input {
+  display: flex;
+  flex-direction: column;
+}
+.label {
+  width: 100px;
+}
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
