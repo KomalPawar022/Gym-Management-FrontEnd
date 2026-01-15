@@ -1,0 +1,6 @@
+<button class="btn btn-primary" (click)="handleNewMember()">
+  Add new Member
+</button>
+<ng-container *ngIf="openDetail">
+  <app-member-details> </app-member-details>
+</ng-container>
